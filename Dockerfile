@@ -3,6 +3,7 @@ MAINTAINER Graham Ollis <plicease@cpan.org>
 
 ADD source.list /etc/apt/sources.list
 RUN apt-get update
+# RUN apt-get upgrade -y
 RUN apt-get -y install wget curl tcsh perl-modules clang bzip2 build-essential perl locales sudo adduser nano git
 RUN echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
 RUN locale-gen -a
@@ -37,3 +38,5 @@ RUN tcsh -c 'curl -L http://cpanmin.us | perl - App::cpanminus -v'
 RUN tcsh -c 'cpanm NX::cpanoutdated -v'
 RUN tcsh -c 'nxcpan-outdated | cpanm -v'
 
+ENTRYPOINT ["/bin/tcsh", "-c"]
+CMD exec tcsh

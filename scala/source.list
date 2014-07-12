@@ -1,0 +1,4 @@
+deb http://apt.sydney.wdlabs.com:3142/debian wheezy main
+deb http://apt.sydney.wdlabs.com:3142/debian wheezy-updates main
+deb http://apt.sydney.wdlabs.com:3142/security.debian.org/ wheezy/updates main
+

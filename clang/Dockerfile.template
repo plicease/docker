@@ -9,15 +9,15 @@ RUN apt-get -y install wget curl tcsh perl-modules bzip2 build-essential perl lo
 RUN echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
 RUN locale-gen -a
 
-# CLANG 3.4.2
+# CLANG {$version}
 WORKDIR /usr/local/src
 RUN apt-get install -y python groff-base                      && \
-    wget http://llvm.org/releases/3.4.2/llvm-3.4.2.src.tar.gz && \
-    wget http://llvm.org/releases/3.4.2/cfe-3.4.2.src.tar.gz  && \
-    bsdtar xf llvm-3.4.2.src.tar.gz                           && \
-    bsdtar xf cfe-3.4.2.src.tar.gz                            && \
-    cd /usr/local/src/llvm-3.4.2.src                          && \
-    mv ../cfe-3.4.2.src tools/clang                           && \
+    wget http://llvm.org/releases/{$version}/llvm-{$version}.src.tar.gz && \
+    wget http://llvm.org/releases/{$version}/cfe-{$version}.src.tar.gz  && \
+    bsdtar xf llvm-{$version}.src.tar.gz                           && \
+    bsdtar xf cfe-{$version}.src.tar.gz                            && \
+    cd /usr/local/src/llvm-{$version}.src                          && \
+    mv ../cfe-{$version}.src tools/clang                           && \
     ./configure --prefix=/usr/local                           && \
     make                                                      && \
     make install                                              && \
